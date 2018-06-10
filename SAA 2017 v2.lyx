@@ -1,0 +1,4025 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+
+
+\usetheme{Warsaw}
+%
+%start of text to add page numbers
+%
+\setbeamercolor{mycolor}{fg=white,bg=black}
+\defbeamertemplate*{footline}{shadow theme}{%
+\leavevmode%
+\hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm plus1fil,rightskip=.3cm]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\hfill\insertshortauthor
+\end{beamercolorbox}%
+\begin{beamercolorbox}[wd=.4\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle\hfill%
+\end{beamercolorbox}%
+\begin{beamercolorbox}[wd=.1\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{mycolor}%
+\hfill\insertframenumber\,/\,\inserttotalframenumber
+\end{beamercolorbox}}%
+\vskip0pt%
+}
+%
+%end of text to add page numbers
+%
+
+
+%\setbeamercovered{transparent}
+% or whatever (possibly just delete it)
+
+
+%
+%below removes navigation symbols
+%you might want this is a version for live presentation
+\setbeamertemplate{navigation symbols}{}
+%\setbeamertemplate{footline}[page number]
+
+%
+%sets the page size a little bigger to get more text in a default font size
+\geometry{paperwidth=141mm,paperheight=106mm} 
+
+%comment out next two lines for screen viewing with active hyperlinks 
+\usepackage{pgfpages}
+\pgfpagesuselayout{resize to}[letterpaper,border shrink=5mm,landscape]
+
+%
+%hyperlink settings
+%
+%\usepackage{hyperref}
+%\hypersetup{colorlinks=true,citecolor=green}
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
+
+%\usepackage[english]{babel}
+\usepackage{blindtext}
+\end_preamble
+\use_default_options false
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "times" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 10
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<chunk1, echo=FALSE, warning=FALSE, message=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+require(lubridate)
+\end_layout
+
+\begin_layout Plain Layout
+
+require(xtable)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Investment Strategy
+\end_layout
+
+\begin_layout Subtitle
+Assets, Strategy and Process
+\end_layout
+
+\begin_layout Author
+Investment Management Division
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Appears in Lower Left
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+IMD
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(today(),"%B %d, %Y")}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Itemize
+Either use conference name or its abbreviation.
+ 
+\end_layout
+
+\begin_layout Itemize
+Not really informative to the audience, more for people (including yourself)
+ who are reading the slides online
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{format(today(),"%m/%d/%Y")}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+optional, should be abbreviation of conference name
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Institute
+Arizona State Retirement System
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+AtBeginSection[]{%
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+frame<beamer>{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+frametitle{Outline}   
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+tableofcontents[currentsection,currentsubsection] 
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+AtBeginSubsection[]{%
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+frame<beamer>{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+frametitle{Outline}   
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+tableofcontents[currentsection,currentsubsection] 
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+If you wish to uncover everything in a step-wise fashion, uncomment the
+ following command:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+beamerdefaultoverlayspecification{<+->}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Outline
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Assets, Strategy and Process
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In this investment strategy paper, we will be talking about assets, strategy
+ and process
+\end_layout
+
+\begin_layout Itemize
+Assets are the things we own and are the foundation of the return generation
+ process
+\end_layout
+
+\begin_layout Itemize
+By strategy we refer to processes to enhance returns compared to passive
+ implementations through trading, tactical positioning, idiosyncratic risk
+ and other methods.
+ As part of strategy, we define and establish targets for leverage and liquidity.
+ We also define and quantify target return enhancements from various elements
+ of strategy.
+\end_layout
+
+\begin_layout Itemize
+By process we refer both to methods, such as research and performance measuremen
+t, that feed the investment decision making process as well as governance
+ methods to ensure that the implementation meets regulatory and policy requireme
+nts
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+What's new?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In the past, the board has approved a 
+\begin_inset Quotes eld
+\end_inset
+
+Strategic Asset Allocation
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This document includes a strategic asset allocation, but also goes beyond
+ that by describing strategies and processes which will be used in implementing
+ the investment program
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+As part of this we will provide our estimates for future returns on assets
+ taking in to account our strategy and the outperformance associated with
+ that strategy
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+By expanding the scope in this way, we are now explicit in articulating
+ strategies for all our asset classes
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We also require that every asset class has an implementation plan reviewed
+ at least annually by the Asset Class committee operating as required under
+ SIP006
+\end_layout
+
+\begin_layout Itemize
+The implementation plan will contain a market review, will establish shorter
+ term goals and strategies as well articulating a plan to ensure adequate
+ diversification
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Previously, we only had board approved asset class strategies for real estate,
+ private equity and some opportunistic investments.
+ This document replaces the prior approved strategy documents for these
+ asset categories
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Focus on the Long Run
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+This is intended as a true long range plan focused on a horizon of 20 to
+ 30 years
+\end_layout
+
+\begin_layout Itemize
+Even though this plan will be reviewed every few years, the focus of asset
+ allocation and strategy articulation is on a much longer time frame
+\end_layout
+
+\begin_layout Itemize
+Near term return expectations are considered as part of the annual implementatio
+n plans and tactical positioning activities, but are not a focus of this
+ document
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+How to read this document
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+This document contains both background and explanatory information as well
+ as regulatory text which are intended as board policy
+\end_layout
+
+\begin_layout Itemize
+Sentences typed like this are intended as background text and do not have
+ the force of regulation or policy
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Policy
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Policy statements appear in a box like this.
+ Policy statements in this document direct investment activities and must
+ be complied with.
+ Only the ASRS board can change board adopted policies.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Assets
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Assets
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Assets are the foundation of an investment strategy and the primary driver
+ of returns
+\end_layout
+
+\begin_layout Itemize
+Assets are things you can own that store value
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Investable assets are ones that can be legally bought and sold, have a system
+ of title or other legal protections making them suitable for investors
+\end_layout
+
+\begin_layout Itemize
+Asset values are established in competitive markets
+\end_layout
+
+\begin_layout Itemize
+The main types of assets we will address are:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Stocks and other means owning rights to the profits of companies and derivatives
+ thereof
+\end_layout
+
+\begin_layout Itemize
+Sovereign bonds and high grade corporate bonds are securities reflecting
+ a right to receive payments of principal and interest (usually notional,
+ but can be indexed to inflation) where the primary risk is changes in interest
+ rates and the relative valuation of currency in which the debt is denominated
+ and derivatives thereof
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+Credit
+\begin_inset Quotes erd
+\end_inset
+
+ which are bonds or other loans to companies or individuals where the primary
+ risk is the ability of the company to repay and derivatives thereof
+\end_layout
+
+\begin_layout Itemize
+Real estate which is non-movable real property where the owner seeks to
+ profit by collecting rents or other payments for the rights to use the
+ property and through the potential appreciation of the property
+\end_layout
+
+\begin_layout Itemize
+Multi-asset strategies that span asset types, typically implemented as long/shor
+t derivatives portfolios 
+\end_layout
+
+\begin_layout Itemize
+Personal property of all types
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Our intention is that all assets which may legally be owned and traded are
+ potential investments
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The Size of Asset Markets
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size scriptsize
+The size of global markets is of interest because it implies a 
+\begin_inset Quotes eld
+\end_inset
+
+market portfolio
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size scriptsize
+There is considerable academic debate about this concept including both
+ the scope of assets and method of measurement
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size scriptsize
+Some advocate broad definitions including human capital
+\end_layout
+
+\begin_layout Itemize
+
+\size scriptsize
+Others advocate narrow definitions of 
+\begin_inset Quotes eld
+\end_inset
+
+investable
+\begin_inset Quotes erd
+\end_inset
+
+ assets
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\size scriptsize
+Our view is that it is useful to know global market sizes but we are cautious
+ about any inference of optimality of this as a portfolio
+\end_layout
+
+\begin_layout Itemize
+
+\size scriptsize
+Approximate major asset category sizes
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size scriptsize
+Stocks – $70 trillion
+\end_layout
+
+\begin_layout Itemize
+
+\size scriptsize
+Privately owned companies – unknown but large
+\end_layout
+
+\begin_layout Itemize
+
+\size scriptsize
+Bonds and other debt – $200 trillion of which $60 trillion is sovereign
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\size scriptsize
+Real estate – $200 trillion including owner occupied, $25 trillion in 
+\begin_inset Quotes eld
+\end_inset
+
+investor
+\begin_inset Quotes erd
+\end_inset
+
+ hands
+\end_layout
+
+\begin_layout Itemize
+
+\size scriptsize
+Cash (Currency and bank deposits) – $30 trillion
+\end_layout
+
+\begin_layout Itemize
+
+\size scriptsize
+Gold – $8 trillion
+\end_layout
+
+\begin_layout Itemize
+
+\size scriptsize
+Art and other collectibles – unknown but large
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\size scriptsize
+Our view is that the core assets for a portfolio are stocks, bonds and real
+ estate
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size scriptsize
+These are the traditional and largest markets for enhancing and storing
+ wealth
+\end_layout
+
+\begin_layout Itemize
+
+\size scriptsize
+These assets generate earnings, interest and rents providing cash flow which
+ is the basis of their valuation
+\end_layout
+
+\begin_layout Itemize
+
+\size scriptsize
+Cash is needed operationally but our view is that it should normally be
+ 
+\begin_inset Quotes eld
+\end_inset
+
+assetized
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\size scriptsize
+We would include other assets (such as personal property, multi-asset derivative
+ strategies, commodities) if they are expected to be accretive to total
+ return
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Asset Selection
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In selecting assets for a recommended portfolio, our considerations include
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+designing a portfolio that includes the major assets in the market portfolio
+\end_layout
+
+\begin_layout Itemize
+that is broadly diversified across asset types, geography and the fundamental
+ risk factors that drive returns
+\end_layout
+
+\begin_layout Itemize
+is designed to meet the actuarial return over the long run
+\end_layout
+
+\begin_layout Itemize
+and is readily investable
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Flexibility is of paramount importance so strategies can be adjusted to
+ changing circumstances and capital markets dynamics
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We establish broad ranges for assets
+\end_layout
+
+\begin_layout Itemize
+provide an annual review process to adjust strategies
+\end_layout
+
+\begin_layout Itemize
+and provide that this investment strategy shall be reviewed at least every
+ three to five years
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Benchmark Selection
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size scriptsize
+Benchmarks are needed to assess the quality of implementation of a strategy
+\end_layout
+
+\begin_layout Itemize
+
+\size scriptsize
+Benchmarks should investable
+\end_layout
+
+\begin_layout Itemize
+
+\size scriptsize
+Stocks are the easiest class to benchmark
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size scriptsize
+There are many published indices with a variety of characteristics
+\end_layout
+
+\begin_layout Itemize
+
+\size scriptsize
+We are recommending ACWI-IMI which is the broadest, yet liquid and investable,
+ index
+\end_layout
+
+\begin_layout Itemize
+
+\size scriptsize
+It represents essentially all global investable stocks without any bias
+ or filter other than liquidity, which is the essence of investability
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\size scriptsize
+Because of the large number of issues, indexing bonds is different from
+ stocks 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size scriptsize
+Even though there is an effort through these indices to define an aggregate
+ market portfolio, they fall short on investability because the large number
+ of issues is impractical to implement even in a large portfolio like ours
+ and, in the case of corporate bonds, inadequate liquidity for some issues
+\end_layout
+
+\begin_layout Itemize
+
+\size scriptsize
+For predominantly interest rate sensitive investments we propose continuing
+ the use of the Bloomberg Barclay's Agg because it is the most widely recognized
+ index and analytical services for risk management are readily available
+ for it
+\end_layout
+
+\begin_layout Itemize
+
+\size scriptsize
+For credit investments, we consolidate to a single index, the S&P/LSTA Leveraged
+ Loan Index plus a spread of 250 bp.
+ We believe this index is a representative barometer of credit risk in the
+ market particularly as it is floating rate and not generally subject to
+ interest rate risk.
+ The 250 bp spread reflects the illiquidity of private market debt opportunities
+, the area of the credit markets that we perceive to have the best total
+ return opportunities.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\size scriptsize
+We recommend retaining ODCE as the real estate index
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size scriptsize
+ODCE was introduced about 10 years ago as a correction to the absence of
+ an investable index in real estate
+\end_layout
+
+\begin_layout Itemize
+
+\size scriptsize
+It consists of the market cap weighted net returns of about 20 institutional
+ grade open end funds
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Benchmarks are not model portfolios
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+While benchmarks are investable we do not necessarily intend to replicate
+ them in our portfolios
+\end_layout
+
+\begin_layout Itemize
+In some cases, our portfolios will be different from the benchmarks and
+ tracking error should be expected
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The current equities portfolio varies from its benchmark through index selection
+, geographic weight and factor implementation
+\end_layout
+
+\begin_layout Itemize
+The current credit portfolio varies from its benchmark through focus on
+ direct lending and distressed strategies
+\end_layout
+
+\begin_layout Itemize
+The current real estate varies from its benchmark through sector and life
+ cycle strategies
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+In order to enhance returns, we will manage our positions relative to benchmarks
+ based on risk factors unique to each portfolio and opportunities as they
+ evolve through time
+\end_layout
+
+\begin_layout Itemize
+These strategies to manage relative to benchmarks will be reviewed on an
+ ongoing basis and documented in implementation plans updated at least annually
+\end_layout
+
+\begin_layout Itemize
+We will document in advance the strategies we are following, will state
+ an expected outperformance from the strategies we pursue and will report
+ whether or not this is achieved
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Asset Allocation and Benchmark Policy
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Asset Allocation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<asset.allo, echo=FALSE, results='asis'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+aa=data.frame(Target=c(50,20,20,10,0,0),Low=c(35,10,10,0,0,0),High=c(65,30,30,20,
+10,5),Benchmark=c("ACWI-IMI","ODCE net","S&P/LSTA+250","Bloomberg Barclays
+ Ag","Investment Specific","90 day TBill"))
+\end_layout
+
+\begin_layout Plain Layout
+
+rownames(aa)=c("Equities","Real Estate","Credit","Interest Rate Sensitive
+ Bonds","Other","Cash")
+\end_layout
+
+\begin_layout Plain Layout
+
+print(xtable(aa,digits=0),scalebox=.9)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Notes:
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Transition Rule – during the buildout phase for real estate, any underweight
+ in real estate will be allocated ratably to equities (83.3%) and interest
+ rate sensitive bonds (16.7%)
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+SIP002 (Tactical Positioning and Rebalancing) will govern the management
+ of asset weights within ranges
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Multi-asset derivative strategies may be included in the 
+\begin_inset Quotes eld
+\end_inset
+
+Other
+\begin_inset Quotes erd
+\end_inset
+
+ portfolio or may be implemented as alpha overlays in the equity portfolio,
+ but to the extent implemented as an overlay this will reduce the availability
+ for investment in the Other category
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\size footnotesize
+Under the transition rule, the initial allocation will be approximately
+ 58% to equities and 12% to core bonds resulting in a smooth transition
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Strategy
+\end_layout
+
+\begin_layout Subsection
+Risk
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Risk is the fundamental driver of returns
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In order to make money, you have to take risk
+\end_layout
+
+\begin_layout Itemize
+In this section, we will explore in some detail what we mean by this and
+ how we intend to manage risk in our portfolio
+\end_layout
+
+\begin_layout Itemize
+Fundamentally, risk is a process, activity or exposure that generates returns
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Risk necessarily entails the possibility of loss, otherwise there would
+ be no reward
+\end_layout
+
+\begin_layout Itemize
+We will talk about volatility more in a moment, but fluctuations in value
+ aren't what we mean here
+\end_layout
+
+\begin_layout Itemize
+Though hard to define precisely, we intend by risk to refer to the possibility
+ of gains and losses that in some sense 
+\begin_inset Quotes eld
+\end_inset
+
+stick
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Risk is multi-dimensional
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Risk means different things to different people, but the complexity in understan
+ding risk goes beyond that
+\end_layout
+
+\begin_layout Itemize
+As we will outline below, there are different parameters of risk simultaneously
+ impacting a portfolio and providing opportunity to generate returns
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Business risk
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We find it useful to think of risk significantly in terms of business risk,
+ i.e.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The ability of companies to successfully sell products and manage their
+ operations
+\end_layout
+
+\begin_layout Itemize
+The ability of properties to attract tenants
+\end_layout
+
+\begin_layout Itemize
+The ability of borrowers to repay their loans when we extend them credit
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+While much of financial theory deals with abstractions of risk derived from
+ statistical analysis of returns
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It is very important to keep in mind that business risk (along with economic
+ risks discussed in coming slides) is what underlies the statistics
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+By and large we embrace business risk in an effort to profit from it
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We mitigate business risk through owning highly diversified global portfolios
+\end_layout
+
+\begin_layout Itemize
+We engage in diligence when we are taking idiosyncratic business risk
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Economic Cycles
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+The economy, business cycle and capital markets dynamics also are a source
+ of risk
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+The economy has ups and downs creating risks and opportunities
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Economic retractions are a source of risk, particularly for enterprises
+ lacking resources to ride out a recession
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Unanticipated inflation is a risk for fixed rate investments and for businesses
+ which may need time to adjust to changing prices
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+When investors seek safety during a recession this causes the prices of
+ risky assets to decline, particularly if stressed or illiquid parties become
+ compelled sellers
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+This is a source of opportunity for investors who are long term oriented
+ and have the resources and fortitude to take advantage of these opportunities
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Like business risk, the risk of economic cycles is hard to avoid and a risk
+ we are consciously taking in pursuit of returns
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Again we reduce this risk through diversification
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Global diversification reduces cycle risk because the world's economies,
+ while linked, do not always move together
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Inflation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Unanticipated inflation impacts portfolios
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It is especially harmful to fixed interest rate securities
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Although the risk of inflation is one of the main drives of term premium
+\end_layout
+
+\begin_layout Itemize
+The majority of our credit portfolio is held in variable rate instruments
+ which are far less sensitive to inflation
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+It also tends to be harmful in the near term to equities
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+But inflation may occur in times of high demand for goods and services which
+ tends to benefit equities
+\end_layout
+
+\begin_layout Itemize
+Over time companies can adjust prices to mitigate inflation's impact, though
+ the impact of inflation varies by industry with winners and losers
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Real estate is often considered a safe haven for inflation risk
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Over time rents can be adjusted with inflation
+\end_layout
+
+\begin_layout Itemize
+Real estate is a hard asset whose value is linked to its reproduction cost
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+We mitigate inflation risk
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Only a small portion of the portfolio (around 10%) is in fixed interest
+ rate securities
+\end_layout
+
+\begin_layout Itemize
+The preponderance of the credit portfolio is in variable rate debt
+\end_layout
+
+\begin_layout Itemize
+The remainder of the portfolio is invested in companies and properties that,
+ over time, can adjust to inflation
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Idiosyncratic Risk and Agency Risk
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+While listed markets generally are liquid and efficient enough to arbitrage
+ away any diversifiable idiosyncratic risk, private markets operate differently
+ because
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Information is widely and cheaply available in liquid markets, while information
+ is expensive and often proprietary in private markets
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Private market investors undertake proprietary due diligence prior to an
+ investment giving them an information edge
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Diligence and information advantages
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+We diligize asset managers to assess their skill, process discipline and
+ organizational depth
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+When investing directly in companies or properties, we focus on business
+ planning and strategy
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+We invest in companies or properties with a plan in mind and generate value
+ by executing that plan
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+We diligize markets to assess the appropriateness of plans
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Requires long term orientation and control over management
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Often requires specialized expertise in markets or processes
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Alignment of interest and avoidance of agency costs
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+The nature of private markets provides investors with control rights that
+ are typically unavailable to public market investors such as board control
+ for private equity investors and financial covenants for private debt lenders
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Compensation structures are put in place to align the interests of all parties.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Collectively, these strategies allow us to pursue idiosyncratic business
+ risk and profit potential in private markets
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Styles and Risk Factors
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In liquid markets, there is strong evidence of risk factors driving performance
+\end_layout
+
+\begin_layout Itemize
+Fama and French demonstrate the influence of size and value on stock performance
+ in their research from the early 1990's
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Additional research demonstrates additional factors such as low volatility
+ and momentum
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+These can be implemented in long only market portfolios
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ASRS allocates 25% its equity portfolio to a risk factor portfolio equally
+ weighted among size, value, low-volatility and momentum risk factors
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Risk factors can also be implemented in long/short portfolios across multiple
+ markets
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In general, the goal of such strategies is to create a return stream driven
+ by the pure risk factors 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It's worth noting that the original Fama French hypothesis was structured
+ as a long short portfolio, so these implementations are well-founded in
+ theory
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Investable directly (in the 
+\begin_inset Quotes eld
+\end_inset
+
+other
+\begin_inset Quotes erd
+\end_inset
+
+ category) or as an overlay to traditional beta 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+By structuring in this way, ASRS intends to invest in such strategies only
+ if they are accretive to total fund returns
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Volatility as risk
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We've noted that we define risk as a position, strategy or process that
+ generates returns
+\end_layout
+
+\begin_layout Itemize
+While much of modern portfolio theory treats volatility as a proxy for risk,
+ more recent research calls to doubt whether volatility is a driver of returns
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If volatility were a driver of returns, increasing volatility should increase
+ returns
+\end_layout
+
+\begin_layout Itemize
+While volatility does seem positively connected to expected returns across
+ asset classes (especially between equities and bonds), the same relationship
+ doesn't seem to hold within asset classes
+\end_layout
+
+\begin_layout Itemize
+In fact, the relationship seems to be negative and our risk factor portfolio
+ overweights low volatility stocks in a strategy which is intended to earn
+ 
+\emph on
+above market 
+\emph default
+returns
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+ASRS is relatively indifferent to volatility in devising its investment
+ strategy
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+As a long term investor, we ride out market declines and attempt to profit
+ from them through rebalancing and tactical positioning
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Risk Limitations
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Liquidity
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ASRS needs liquidity to pay benefits and to buy investments
+\end_layout
+
+\begin_layout Itemize
+The net cash flow requirement to pay benefits is approximately $1 billion
+ per year which is less than a 3% draw on assets
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Based on current holdings, assets of the ASRS with daily liquidity are more
+ than 20 times the required amount
+\end_layout
+
+\begin_layout Itemize
+Although ASRS does not have and we do not propose a current income target
+ for the portfolio, the current income of the portfolio from dividends,
+ interest and rent is approximately equal to the cash requirement and, if
+ desired, the benefits could be paid from that income without requiring
+ the sale of assets
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The harder problem for liquidity is to make sure cash is available to buy
+ assets when they are cheap
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The challenge is that assets, while not perfectly correlated, often move
+ together through the cycle and may tend to become more correlated during
+ a down cycle
+\end_layout
+
+\begin_layout Itemize
+If the goal is to buy assets when they are cheap (and it is), then you need
+ money to do that
+\end_layout
+
+\begin_layout Itemize
+This is one of the core functions of an interest rate sensitive portfolio
+ which will tend to hold its value and may increase in value in a recession
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+These assets are desired in a downturn and retain a high degree of liquidity
+ making them a perfect holding to fund asset purchases during tough times
+\end_layout
+
+\begin_layout Itemize
+For this reason, our proposed asset allocation allows this asset class to
+ be drawn down all the way to zero
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Liquidity as Price Discovery
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+While we tend to use the word liquidity referring to the ease with which
+ an asset can be turned to cash, much of the theoretical literature focuses
+ on price discovery as the measure of liquidity
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+In this sense, assets traded continuously on exchanges have are liquid because
+ the prices are readily observable in a large number of arms length transactions
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+In order to trade assets on an exchange they must be homogeneous and traded
+ under standard contractual terms
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Such assets are sometimes called 
+\begin_inset Quotes eld
+\end_inset
+
+financialized
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Owners of assets like this can simply observe the market to estimate the
+ value of their holdings
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\size footnotesize
+The prices of non-financialized assets, such as controlling interests in
+ companies or even single family homes, are determined in negotiations typically
+ requiring the buyer to engage in diligence and often are traded in custom
+ negotiated contracts
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Owners of assets like this need to conduct periodic appraisals comparing
+ the assets owned to different assets that have traded and making adjustments
+ for differences in order to estimate value
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Our view is that neither type of asset or method of determining value is
+ inherently better than the other
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+But they are different and analytical methods need to take that in to account
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Caution needs to be exercised to avoid inferring too much diversification
+ benefit from assets valued with appraisals 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Liquidity of Assets
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Stocks, bonds, currency and their derivatives have daily liquidity with
+ settlement dates typically one to three days after trade
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The liquidity of individual securities varies considerably with some securities
+ trading much less frequently than others and incurring higher costs of
+ trading
+\end_layout
+
+\begin_layout Itemize
+This is particularly true of smaller cap stocks and certain classes of bonds
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Real estate is liquid typically in the span of months with the ability to
+ obtain multiple bids in a short time through an orderly marketing process
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+High quality real estate in major markets is in demand and is more liquid
+ than other real estate
+\end_layout
+
+\begin_layout Itemize
+Real estate valuations go up and down with the economic cycle and the availabili
+ty of credit for buyers
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Privately held companies are a difficult asset to transact
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The transactions require extensive due diligence and intense legal negotiations
+\end_layout
+
+\begin_layout Itemize
+Valuations are susceptible to the economic cycle and the availability of
+ credit for buyers
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Liquidity of Structures
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+The structure for owning an asset affects its liquidity
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+For example, if you own stocks and bonds through a hedge fund you may be
+ precluded from accessing those assets due to lock ups, gating periods or
+ redemption limitations, notwithstanding the underlying liquidity of the
+ assets
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\size footnotesize
+The preferred structure for owning most assets is through a 
+\begin_inset Quotes eld
+\end_inset
+
+separate account
+\begin_inset Quotes erd
+\end_inset
+
+ in which the assets of the investor are segregated with liquidity control
+ features in favor of the investor
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+We hold stocks and bonds predominantly through this type of structure
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+We are implementing our private debt program and real estate program predominant
+ly through this type of structure
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\size footnotesize
+We hold some assets in commingled accounts when it is the most viable option
+ for the strategy
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+\begin_inset Quotes eld
+\end_inset
+
+Open end
+\begin_inset Quotes erd
+\end_inset
+
+ funds allow investors to withdraw capital in quarterly windows at market
+ prices.
+ We use these structures in real estate to access properties not available
+ to us in separate account format because of their size
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+\begin_inset Quotes eld
+\end_inset
+
+Closed end
+\begin_inset Quotes erd
+\end_inset
+
+ funds lock up the investor's capital for periods typically exceeding 10
+ years.
+ We restrict their use for real estate and private debt but allow them for
+ private equity where they are the only viable implementation methodology
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+\begin_inset Quotes eld
+\end_inset
+
+Co-investments
+\begin_inset Quotes erd
+\end_inset
+
+ are low fee investments made alongside a fund, typically offered because
+ the size of the investment exceeds the available capital or diversification
+ requirements of the fund.
+ The investor liquidity in these investments is controlled by the sponsor,
+ but the hold periods are typically three to five years.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Liquidity as Risk
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Liquidity is often cited as a market 
+\begin_inset Quotes eld
+\end_inset
+
+risk factor
+\begin_inset Quotes erd
+\end_inset
+
+, meaning the market provides compensation to those willing to be less liquid
+\end_layout
+
+\begin_layout Itemize
+ASRS seeks to profit from this in multiple ways
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In general, ASRS need for ready cash is low and reasonably predictable
+\end_layout
+
+\begin_layout Itemize
+So, we are in a position to be a 
+\begin_inset Quotes eld
+\end_inset
+
+liquidity provider
+\begin_inset Quotes erd
+\end_inset
+
+ to people who prefer or need to own the most highly liquid assets
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+In stock and bond markets, we can own less liquid securities and can structure
+ trading activities within risk parameters to provide liquidity
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+This happens around changes to the components of equity indices 
+\end_layout
+
+\begin_layout Itemize
+We are also exploring how to approach this more generally through trading
+ operations
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+We also participate in private markets
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It is believed that a portion of the return in these markets is compensation
+ for illiquidity
+\end_layout
+
+\begin_layout Itemize
+We suspect this effect is small and that the larger driver of returns in
+ these markets are idiosyncratic business risks of individual assets
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The incremental return from liquidity is small and captured within the outperfor
+mance expectations of individual asset classes
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Liquidity Policy
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Liquidity Constraints
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Stock, bond and currency exposures in structures with daily liquidity and
+ settlement no later than five business days from notice to sell will not
+ be less than 40% of the total portfolio
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Within equities, investment structures with lockups may not exceed 20% of
+ the equity portfolio and private equity co-investments may not exceed 10%
+ of the equity portfolio
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Within credit, investment structures with lockups may not exceed 25% of
+ the credit portfolio
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Within real estate, investment structures with lockups may not exceed 25%
+ of the real estate portfolio (following transition from legacy portfolio
+ currently in liquidation)
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+In the event of non-compliance with any of these liquidity constraints,
+ a report will be delivered to the investment committee describing the circumsta
+nces and outlining a plan to prudently return to compliance without requiring
+ distressed sale of assets
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+This report does not require the approval of the investment committee
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+A 
+\begin_inset Quotes eld
+\end_inset
+
+lockup
+\begin_inset Quotes erd
+\end_inset
+
+ agreement is one where either of the following is true: (a) ASRS has an
+ unfunded and non-terminable investment commitment excluding commitments
+ for continuing funding for deals already closed and/or (b) ASRS has no
+ right to direct an orderly liquidation, initiate a buy/sell arrangement
+ or, in the case of credit, run-off of the portfolio.
+ Generally, closed end funds will be considered locked-up throughout their
+ term.
+ Lockups with less than one year remaining will not count toward the limitation.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Leverage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Imagine running a business or living your life without credit
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+You'd need to carry cash around and could only buy something if you had
+ enough cash on hand
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+If you own a business and there is a downtown, you might want to buy a strugglin
+g competitor to get its assets cheaply and increase market share
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+But you probably wouldn't be able to do that without credit
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\size footnotesize
+ASRS has historically used leverage inside its portfolios, but not at total
+ fund level
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Virtually all funds similar to ASRS use leverage inside their portfolios
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Fund level leverage is less common, although Canadian plans and some large
+ US plans employ it as part of their strategy
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\size footnotesize
+For ASRS, inability to use fund level leverage means
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+We need to devote significant resources to cash management (about one FTE)
+ because of the daily need to raise or invest cash
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+We incur unneeded transaction costs and often are a price taker in trading
+ because our timing is compelled by cash requirements
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+We carry higher cash balances which negatively impacts portfolio returns
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\size footnotesize
+In the context of rebalancing or tactical positioning, ASRS currently has
+ to sell assets in order to buy assets
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Bridging transactions with debt can lead to better execution
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+In market downturns, leverage creates tactical flexibility to buy assets
+ when they are cheap
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\size footnotesize
+For these reasons, we believe it is prudent to allow a modest amount of
+ leverage as part of our portfolio management toolkit
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Leverage in Theory
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Avoiding leverage is not based in theory
+\end_layout
+
+\begin_layout Itemize
+The underpinnings of modern finance presume levered portfolios
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Modern portfolio theory hypothesizes the existing of a 
+\begin_inset Quotes eld
+\end_inset
+
+tangency portfolio
+\begin_inset Quotes erd
+\end_inset
+
+ which, combined with cash or leverage, is an optimal portfolio for all
+ investors
+\end_layout
+
+\begin_layout Itemize
+Fama and French in their three factor model built their theory around long
+ short 
+\begin_inset Quotes eld
+\end_inset
+
+market neutral
+\begin_inset Quotes erd
+\end_inset
+
+ portfolios
+\end_layout
+
+\begin_layout Itemize
+Indeed, 
+\begin_inset Quotes eld
+\end_inset
+
+leverage aversion
+\begin_inset Quotes erd
+\end_inset
+
+ is viewed as a market inefficiency that can lead to asset distortions
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Our view is that leverage is just another kind of risk that should not be
+ categorically ruled out, but should be managed as part of a total program
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Leverage – Strategic Use
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ASRS and virtually all similar funds currently has leverage in its portfolio
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Stocks and private equity holdings are levered at an average of around 60%
+ loan to value
+\end_layout
+
+\begin_layout Itemize
+Private credit and real estate are levered at up to 60% loan to value
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+By targeting leverage in this way, the long term risk and expected returns
+ for these major asset classes are roughly the same allowing us to implement
+ a highly diversified portfolio without lowering expected return.
+ Otherwise, there is a temptation to concentrate exposure in riskier assets
+ to enhance return
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Leverage – Operational Use
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+We propose operational use of leverage to optimize cash, avoid trading frictions
+ and reduce time spent on cash management
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Cash management has been a challenge for ASRS
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Since the global financial crisis, the average cash drag on the portfolio
+ has been around 10bp per year
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Even with improvement from cash assetization adopted in 2016, the cash drag
+ was still negative at 15 bp due to futures cost and mismatch
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Cash management is time consuming – although our annual cash flows are quite
+ predictable, at a daily scale they are quite volatile with flows of over
+ $100 million occurring on many days
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+If we assetize, the process has both tracking error due to unavailability
+ of contracts that match our SAA and often return drag from roll costs
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+If we invest short term cash flows, we are exposed to round trip transaction
+ costs
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\size footnotesize
+We believe maintaining credit lines with typical balances outstanding equal
+ to around 2% of fund assets would have multiple benefits
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+It turns cash operations in to a source of returns because the rates for
+ a borrower in our position will be quite low and well below the expected
+ SAA return
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+It will allow us to trade less frequently and much more effectively, allowing
+ us to trade patiently accumulating liquidity premiums rather than paying
+ them
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+It will free investment team time to pursue higher value activities than
+ short term cash management
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\size footnotesize
+We believe that this approach will produce a positive return of an additional
+ 3bp to 5bp to total fund compared to a negative return under the current
+ approach
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Leverage – Tactical Use
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Although we establish a target leverage of 2%, we propose allowing up to
+ 20% leverage on total fund to allow us to implement tactical strategies
+ to buy assets at favorable valuations
+\end_layout
+
+\begin_layout Itemize
+This allows us to rebalance a portfolio to SAA targets in down markets where
+ it may be very difficult, and likely inadvisable, to sell less liquid assets
+ to fund stock market purchases
+\end_layout
+
+\begin_layout Itemize
+Additionally, it allows continuation of strategic relationships in private
+ debt and real estate through down turns allowing those ventures to acquire
+ assets at the most favorable times
+\end_layout
+
+\begin_layout Itemize
+The leverage would be returned to target levels through asset sales in favorable
+ markets
+\end_layout
+
+\begin_layout Itemize
+The leverage can be implemented through borrowing or synthetically through
+ futures
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Leverage Policy
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Leverage Constraints
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Real estate and credit is targeted for leverage up to 55% on a portfolio
+ basis
+\end_layout
+
+\begin_layout Itemize
+Interest rate sensitive bonds will not be levered
+\end_layout
+
+\begin_layout Itemize
+Fund level leverage is targeted for 2% with a low of 0% and maximum of 20%
+\end_layout
+
+\begin_layout Itemize
+Leverage above 5% is intended for purchase of assets at favorable prices
+ and if the investment team intends to tactically take leverage above this
+ level they will deliver a report to the investment committee outlining
+ a plan of action for asset purchases and a plan to ultimately return leverage
+ to target levels
+\end_layout
+
+\begin_layout Itemize
+Should any of these leverage targets be exceeded a report will be delivered
+ to the investment committee outlining the circumstances and stating a plan
+ to prudently return the portfolio to compliance without requiring sale
+ of assets in distressed circumstances
+\end_layout
+
+\begin_layout Itemize
+The forgoing plans do not require the approval of the investment committee
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Leverage for real estate and private credit is reduced from a previous target
+ of up to 60% to offset any increased risk from the 2% operational use of
+ leverage
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Asset Class Implementation Plans
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Overview
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Implementation Plans Requirement
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Every asset class will have an implementation plan approved by the asset
+ class committee
+\end_layout
+
+\begin_layout Itemize
+Implementation plans will be reviewed and updated annually or more frequently
+ at the request of the asset class committee
+\end_layout
+
+\begin_layout Itemize
+The CIO will report to the investment committee on the implementation plans
+ annually
+\end_layout
+
+\begin_layout Itemize
+Each implementation plan will include
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+the near term strategy for the assets including goals ensuring portfolios
+ are well diversified and expected performance from the strategies relative
+ to benchmark
+\end_layout
+
+\begin_layout Itemize
+A review of the prior year plan and whether the outperformance goals were
+ achieved
+\end_layout
+
+\begin_layout Itemize
+any sub-allocations or benchmarks for internal performance measurement (but
+ not modifying the overall SAA benchmarks)
+\end_layout
+
+\begin_layout Itemize
+means of compliance with the SAA including liquidity and leverage constraints
+\end_layout
+
+\begin_layout Itemize
+structures for implementing the plan including separate accounts, commingled
+ funds, ETFs, etc
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Equities
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+It is anticipated that the initial implementation plan will mimic the current
+ implementation of equities through S&P, EAFE and EM indices and EDHEC factor
+ implementations
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Approximately 50% of equities will be managed internally
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Historically, the equities portfolios have not outperformed their benchmark
+ in aggregate, largely due to poor outcomes with external active management
+ which has now been discontinued
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+However, internally managed portfolios have been positive contributors and
+ the internal management program has been increased
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\size footnotesize
+The outperformance targets are
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Index Selection 10bp
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Enhanced index strategies (75% of portfolio) 10bp
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Factor Strategies (25% of portfolio) 50bp
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Securities Lending 5bp
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Weighted average 35bp
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\size footnotesize
+It is anticipated that up to 20% of the equity portfolio may be overlaid
+ with an alpha enhancement strategy
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Such a strategy is expected to have low correlation to equities and may
+ be based on long/short strategies across multiple liquid asset classes
+ including currencies and may be based on factor or style approaches including
+ momentum, value, carry, volatility and other such strategies
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Any such overlay will be implemented with liquid assets, available liquidity
+ not less than quarterly and initial lockups not greater than two years
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+If implemented, this would be targeted to add another 25bp to 50bp of performanc
+e to the portfolio
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Real Estate
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Real estate has been operating under implementation plans for the last 5
+ years
+\end_layout
+
+\begin_layout Itemize
+It is anticipated there will be continuity from the existing implementation
+ plans which provide for diversification of assets across property types,
+ markets and project life cycle
+\end_layout
+
+\begin_layout Itemize
+The real estate program is implemented through a series of strategic relationshi
+ps with market and product specialists structured as separate accounts
+\end_layout
+
+\begin_layout Itemize
+It is anticipated that the real estate portfolio will grow gradually with
+ an extremely disciplined approach taking, perhaps, five to ten years to
+ reach its target alllocation
+\end_layout
+
+\begin_layout Itemize
+The historic outperformance of the current real estate strategy has been
+ over 450bp per year (excluding legacy investments pursued under a different
+ strategy)
+\end_layout
+
+\begin_layout Itemize
+The ASRS strategy is differentiated from the ODCE benchmark which reflects
+ core stabilized assets while the ASRS strategy invests across the property
+ life cycle with about 45% leverage compared 22% in the benchmark
+\end_layout
+
+\begin_layout Itemize
+We believe continuing outperformance of 175bp per year is an appropriate
+ expectation
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Credit
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It is anticipated that credit investments will continue to be implemented
+ consistent with the current investments which are a combination of high
+ yield bonds, private debt and distressed credit investments
+\end_layout
+
+\begin_layout Itemize
+The average outperformance in this strategy has historically been over 200
+ bp per annum
+\end_layout
+
+\begin_layout Itemize
+We believe continuing outperformance of 100bp per year is an appropriate
+ expectation
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Interest Rate Sensitive Bonds
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It is anticipated that that investments in Interest Rate Sensitive Bonds
+ will continue to be implemented consistent with current investments in
+ the Bloomberg Barclays U.S.
+ Aggregate Bond Index, which represents the US investment-grade fixed income
+ market including US Treasuries and Agencies, Agency Mortgage-Backed Securities,
+ Corporate Bonds, Commercial Mortgage-Backed Securities (CMBS) and Asset-Backed
+ Securities (ABS)
+\end_layout
+
+\begin_layout Itemize
+The average outperformance in this strategy has historically been about
+ 30 bp per annum
+\end_layout
+
+\begin_layout Itemize
+We believe continuing outperformance of 15bp per year is an appropriate
+ expectation including securities lending
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Cash
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It is anticipated that current program of assetizing cash to a blend of
+ stock and bond positions through futures contracts will be continued
+\end_layout
+
+\begin_layout Itemize
+The amount of cash is expected to be much smaller
+\end_layout
+
+\begin_layout Itemize
+As previously noted, historic cash drag has been around 10bp per year
+\end_layout
+
+\begin_layout Itemize
+Under this new approach, we believe zero effect on total fund is a reasonable
+ expectation
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Tactical Management
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+House Views
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We monitor markets considering
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+valuations relative to historic norms
+\end_layout
+
+\begin_layout Itemize
+relative valuation across asset classes
+\end_layout
+
+\begin_layout Itemize
+relative valuation of currency and global interest rates
+\end_layout
+
+\begin_layout Itemize
+trends and momentum
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+We document this analytical work in 
+\begin_inset Quotes eld
+\end_inset
+
+house views
+\begin_inset Quotes erd
+\end_inset
+
+ which are the basis for tactical decisions to overweight or underweight
+ certain asset classes
+\end_layout
+
+\begin_layout Itemize
+A tactical positioning committee meets monthly (or more frequently if necessary)
+ to review and implement tactical decisions
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Rebalance and Tactical Positioning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The 
+\begin_inset Quotes eld
+\end_inset
+
+long run
+\begin_inset Quotes erd
+\end_inset
+
+ is a series of 
+\begin_inset Quotes eld
+\end_inset
+
+short runs
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+As a long term investor, we are not a static 
+\begin_inset Quotes eld
+\end_inset
+
+buy and hold
+\begin_inset Quotes erd
+\end_inset
+
+ investor
+\end_layout
+
+\begin_layout Itemize
+Rather, we continuously engage in rebalancing and tactically positioning
+ our portfolio
+\end_layout
+
+\begin_layout Itemize
+While there is generally considered to be a premium for rebalancing, that
+ is built in to our benchmark
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Our benchmark is calculated as though the portfolio could be costlessly
+ and perfectly rebalanced on a monthly basis
+\end_layout
+
+\begin_layout Itemize
+Research shows that this adds around 50bp per year to long run performance
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+ASRS needs to have an effective rebalance program to keep up with this and
+ overcome transaction costs
+\end_layout
+
+\begin_layout Itemize
+ASRS accomplishes outperformance by effective tactical positioning considering
+ house views and cost consciousness in avoiding excessive or high cost trading
+\end_layout
+
+\begin_layout Itemize
+ASRS has historically achieved around 40bp in outperformance from rebalancing
+ and tactical positioning
+\end_layout
+
+\begin_layout Itemize
+We believe continued outperformance of approximately 25bp per year is a
+ reasonable expectation
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Process
+\end_layout
+
+\begin_layout Subsection
+Planning
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Plans and Hierarchy of Plans
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Plans add value by encouraging strategic thought and tactical activity 
+\end_layout
+
+\begin_layout Itemize
+Plans help organizations be more effective by focusing effort and improving
+ coordination
+\end_layout
+
+\begin_layout Itemize
+This document establishes three levels of planning
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Long range strategic planning focused on broad asset allocation as a foundation
+ for returns which are expected to be enhanced by strategy and processes
+ articulated in the plan
+\end_layout
+
+\begin_layout Itemize
+Annual implementation plans that focus efforts based on current market context
+ and most recent research
+\end_layout
+
+\begin_layout Itemize
+House views that guide tactical activities in rebalancing and positioning
+ the portfolio based on immediate market circumstances
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Value Creation Processes
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Research and Strategy Formation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The portfolio managers are experts in the markets they cover
+\end_layout
+
+\begin_layout Itemize
+They are responsible to monitor market conditions and identify opportunities
+ for attractive investment based capital markets dynamics, regulatory dislocatio
+ns and other factors leading to mispricing of risk
+\end_layout
+
+\begin_layout Itemize
+When a strategy for potential investment is identified, the portfolio managers
+ and CIO concur on a plan for research and diligence which, following the
+ completion of additional due diligence by an outside consultant and approval
+ by an internal asset class committee, may culminate in the deployment of
+ capital
+\end_layout
+
+\begin_layout Itemize
+We remain current in financial markets research as a source of ideas for
+ portfolio implementation
+\end_layout
+
+\begin_layout Itemize
+We conduct ongoing event studies and simulations as a source of ideas for
+ trading implementation in our internal portfolios
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Diligence
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We engage in diligence in an effort to find the best partners and business
+ opportunities
+\end_layout
+
+\begin_layout Itemize
+In private markets we seek an information advantage through diligence
+\end_layout
+
+\begin_layout Itemize
+When our portfolio managers identify an opportunity
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+we engage in an outbound process to find the best counterparties to pursue
+ the opportunity
+\end_layout
+
+\begin_layout Itemize
+we analyze their track record with state of the art statistical methods
+\end_layout
+
+\begin_layout Itemize
+we perform diligence on operational, organizational and legal matters to
+ confirm integrity in the implementation and conduct of the business strategy
+\end_layout
+
+\begin_layout Itemize
+outside consultants are required and always utilized as a key part of the
+ diligence effort
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Performance Measurement and Feedback
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We view performance measurement and feedback as an active part of our investment
+ process and not a mere administrative activity
+\end_layout
+
+\begin_layout Itemize
+Performance measurement adds value because you can only improve if you are
+ candid with yourself about what you are good at and where you need to improve
+\end_layout
+
+\begin_layout Itemize
+In order to create the highest value from performance measurement, the most
+ advanced statistical methods are needed
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We implement both returns and holdings based analysis
+\end_layout
+
+\begin_layout Itemize
+and we are able to present that over varying time frames and rolling periods
+ in order to understand trends
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Cost Management
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Costs matter and we are highly cognizant of costs in managing the investment
+ program
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We manage approximately one third of our assets internally at effectively
+ zero cost
+\end_layout
+
+\begin_layout Itemize
+The remainder of public market assets are managed with custom negotiated
+ vehicle and fee structures
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Private market investments are generally implemented in strategies involving
+ highly specialized expertise 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We need to acquire talent to pursue these strategies and cost minimization
+ is not the objective
+\end_layout
+
+\begin_layout Itemize
+We pursue high return on investment on any fees we pay
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+by first diligizing managers and only negotiating with the most highly qualified
+ among them, and 
+\end_layout
+
+\begin_layout Itemize
+by structuring competitive negotiations among these managers
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+By implementing our private markets investment program largely through separate
+ accounts, we implement in much larger account sizes which facilitates favorable
+ negotiation of fees
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Governance and Monitoring
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Governance
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ASRS has been a leader in establishing robust governance with clear delineation
+ of authority
+\end_layout
+
+\begin_layout Itemize
+The board governance manual in combination with strategic investment policies
+ and the investment policy statement provides a clear framework for investment
+ management
+\end_layout
+
+\begin_layout Itemize
+At the operational level numerous standard operating procedures are in place
+ to guide day to day activities
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Reporting
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ASRS has established a comprehensive reporting mechanism for internal use
+ and to keep the board and the public well informed on its investing activities
+\end_layout
+
+\begin_layout Itemize
+These reports encompass every aspect of the investment operation and include
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The annual investment report included as part of the comprehensive annual
+ financial report 
+\end_layout
+
+\begin_layout Itemize
+Quarterly and monthly performance evaluations
+\end_layout
+
+\begin_layout Itemize
+Holdings and returns based attribution analysis for public market investments
+\end_layout
+
+\begin_layout Itemize
+Public market equivalent benchmarking for private market assets
+\end_layout
+
+\begin_layout Itemize
+Daily portfolio positioning reports
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Compliance
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ASRS has established a comprehensive system for oversight and compliance
+\end_layout
+
+\begin_layout Itemize
+Every trade in public markets is validated by a third party for compliance
+ with the investment strategy and statutory requirements
+\end_layout
+
+\begin_layout Itemize
+All private market investments receive confirmatory diligence from a third
+ party consultant
+\end_layout
+
+\begin_layout Itemize
+An independent consultant monitors asset class committee meetings to confirm
+ compliance with policy
+\end_layout
+
+\begin_layout Itemize
+Assets are held by a custodian and returns are calculated by an independent
+ consultants
+\end_layout
+
+\begin_layout Itemize
+Financial statements are audited by an independent auditor
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Summary and Expected Returns
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Summary
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In this document, we have articulated broad asset allocation and investment
+ strategies which we believe will enhance the returns from assets
+\end_layout
+
+\begin_layout Itemize
+NEPC has provided a comprehensive study of expected asset returns for use
+ by ASRS
+\end_layout
+
+\begin_layout Itemize
+Utilizing these returns, the following table summarizes the long run expected
+ returns for ASRS
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<er, echo=FALSE, warning=FALSE, message=FALSE, results='asis'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+er=read.csv("expreturn.csv")
+\end_layout
+
+\begin_layout Plain Layout
+
+print(xtable(er,digits=2),scalebox=.7)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
