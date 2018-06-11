@@ -1,0 +1,293 @@
+---
+title: "Efficient Portfolio"
+output:
+  html_document: default
+  html_notebook: default
+---
+
+
+# Calculating an efficient portfolio with NEPC data
+
+We will calculate the minimum variance portfolio with target return of 8%.  
+
+```{r, echo=FALSE}
+source('portfolio_noshorts.r.txt', encoding='UTF-8')
+require(knitr)
+# function to convert from geom return to arith return
+# geo is the geometric return (may be a vector)
+# vol is the volatility of the asset (may be a vecor)
+# n is the number of years
+geom_to_arith=function(geo,vol,n) {
+  var=vol^2
+  factor=(1+var/((1+geo)^2))^((1-n)/(2*n))
+  arith=-1+(1+geo)/factor
+  return(arith)
+}
+# function to convert from arith return to geom return
+# arith is the arithmetic return (may be a vector)
+# vol is the volatility of the asset (may be a vecor)
+# n is the number of years
+arith_to_geom=function(arith,vol,n) {
+  var=vol^2
+  factor=(1+var/((1+arith)^2))^((1-n)/(2*n))
+  geo=-1+(1+arith)*factor
+  return(geo)
+}
+```
+```{r}
+asset_names=c("BbgAgg","LrgUSEq","SmlUSEq","EAFE","EM","PE","PrivCredit","RE")
+geom_returns=c(4,7.5,7.75,7.75,9.5,9.5,8,6.5)/100
+volatility=c(6.03,17.5,21,21,28,13,9.29,15)/100
+correlation=matrix(nrow=8,data=
+                     c(100,0,0,0,0,0,0,10,
+                       0,100,90,70,60,70,60,40,
+                       0,90,100,60,65,75,65,40,
+                       0,70,60,100,70,60,75,35,
+                       0,60,65,70,100,45,80,30,
+                       0,70,75,60,45,100,65,50,
+                       0,60,65,75,80,65,100,40,
+                       10,40,40,35,30,50,40,100))/100
+names(geom_returns)=names(volatility)=asset_names
+rownames(correlation)=asset_names
+colnames(correlation)=asset_names
+n=30
+arith_returns=geom_to_arith(geom_returns,volatility,n)
+Dsqrt=0*correlation
+diag(Dsqrt)=volatility
+covariance=Dsqrt%*%correlation%*%Dsqrt
+
+ans=efficient.portfolio(er=geom_returns,
+                       cov.mat=covariance,
+                       target.return=.078,
+                       shorts=FALSE)
+port_arith_return=arith_returns%*%ans$weights
+port_geom_return=arith_to_geom(port_arith_return,ans$sd,n)
+```
+
+The weights for the portfolio are `r kable(ans$weights,digits=2)`
+The portfolio has a standard deviation of `r round(ans$sd*100,2)`%    
+The portfolio has an expected geometric return of `r round(port_geom_return*100,2)`%    
+
+Since the portfolio risk are allocated entirely to private equity and private credit, this suggests the assumptions in not in line with capital markets. 
+
+We will increase the volatility of private equity to 21% (equal to small cap stocks).  We will increase the volatility of private debt to 13%, similar to high yield.  We reduce the volatility of of large cap US stocks to 15%, more in line with recent history.  We will reduce the volatility of real estate to 12% which is consistent with the desmoothing study I did a few years ago.  We leave the returns alone for now.
+
+```{r}
+asset_names=c("BbgAgg","LrgUSEq","SmlUSEq","EAFE","EM","PE","PrivCredit","RE")
+geom_returns=c(4,7.5,7.75,7.75,9.5,9.5,8,6.5)/100
+volatility=c(6.03,15,21,21,28,21,13,12)/100
+correlation=matrix(nrow=8,data=
+                     c(100,0,0,0,0,0,0,10,
+                       0,100,90,70,60,70,60,40,
+                       0,90,100,60,65,75,65,40,
+                       0,70,60,100,70,60,75,35,
+                       0,60,65,70,100,45,80,30,
+                       0,70,75,60,45,100,65,50,
+                       0,60,65,75,80,65,100,40,
+                       10,40,40,35,30,50,40,100))/100
+names(geom_returns)=names(volatility)=asset_names
+rownames(correlation)=asset_names
+colnames(correlation)=asset_names
+n=30
+arith_returns=geom_to_arith(geom_returns,volatility,n)
+Dsqrt=0*correlation
+diag(Dsqrt)=volatility
+covariance=Dsqrt%*%correlation%*%Dsqrt
+
+ans=efficient.portfolio(er=geom_returns,
+                       cov.mat=covariance,
+                       target.return=.078,
+                       shorts=FALSE)
+port_arith_return=arith_returns%*%ans$weights
+port_geom_return=arith_to_geom(port_arith_return,ans$sd,n)
+```
+
+The weights for the portfolio are `r kable(ans$weights,digits=2)`
+The portfolio has a standard deviation of `r round(ans$sd*100,2)`%    
+The portfolio has an expected geometric return of `r round(port_geom_return*100,2)`%    
+
+
+Let's reduce the assumed return for private debt to 7.25%, which is lower than large cap equity returns.  We will increase the real estate return 7.25% which is more compatible with the strategy we are following.
+
+
+```{r}
+asset_names=c("BbgAgg","LrgUSEq","SmlUSEq","EAFE","EM","PE","PrivCredit","RE")
+geom_returns=c(4,7.5,7.75,7.75,9.5,9.5,7.25,7.25)/100
+volatility=c(6.03,15,21,21,28,21,13,12)/100
+correlation=matrix(nrow=8,data=
+                     c(100,0,0,0,0,0,0,10,
+                       0,100,90,70,60,70,60,40,
+                       0,90,100,60,65,75,65,40,
+                       0,70,60,100,70,60,75,35,
+                       0,60,65,70,100,45,80,30,
+                       0,70,75,60,45,100,65,50,
+                       0,60,65,75,80,65,100,40,
+                       10,40,40,35,30,50,40,100))/100
+names(geom_returns)=names(volatility)=asset_names
+rownames(correlation)=asset_names
+colnames(correlation)=asset_names
+n=30
+arith_returns=geom_to_arith(geom_returns,volatility,n)
+Dsqrt=0*correlation
+diag(Dsqrt)=volatility
+covariance=Dsqrt%*%correlation%*%Dsqrt
+
+ans=efficient.portfolio(er=geom_returns,
+                       cov.mat=covariance,
+                       target.return=.078,
+                       shorts=FALSE)
+port_arith_return=arith_returns%*%ans$weights
+port_geom_return=arith_to_geom(port_arith_return,ans$sd,n)
+```
+
+The weights for the portfolio are `r kable(ans$weights,digits=2)`
+The portfolio has a standard deviation of `r round(ans$sd*100,2)`%    
+The portfolio has an expected geometric return of `r round(port_geom_return*100,2)`%    
+
+Now let's increase the correlation of private equity to the rest of equities to 90% correlated with large, 100% correlated with small, 75% correlated with EAFE,60% correlated with EM, 75% correlated with private credit.
+
+
+
+```{r}
+asset_names=c("BbgAgg","LrgUSEq","SmlUSEq","EAFE","EM","PE","PrivCredit","RE")
+geom_returns=c(4,7.5,7.75,7.75,9.5,9.5,7.25,7.25)/100
+volatility=c(6.03,15,21,21,28,21,13,12)/100
+correlation=matrix(nrow=8,data=
+                     c(100,0,0,0,0,0,0,10,
+                       0,100,90,70,60,90,60,40,
+                       0,90,100,60,65,90,65,40,
+                       0,70,60,100,70,75,75,35,
+                       0,60,65,70,100,60,80,30,
+                       0,90,90,75,60,100,75,50,
+                       0,60,65,75,80,75,100,40,
+                       10,40,40,35,30,50,40,100))/100
+names(geom_returns)=names(volatility)=asset_names
+rownames(correlation)=asset_names
+colnames(correlation)=asset_names
+n=30
+arith_returns=geom_to_arith(geom_returns,volatility,n)
+Dsqrt=0*correlation
+diag(Dsqrt)=volatility
+covariance=Dsqrt%*%correlation%*%Dsqrt
+
+ans=efficient.portfolio(er=geom_returns,
+                       cov.mat=covariance,
+                       target.return=.078,
+                       shorts=FALSE)
+port_arith_return=arith_returns%*%ans$weights
+port_geom_return=arith_to_geom(port_arith_return,ans$sd,n)
+```
+
+The weights for the portfolio are `r kable(ans$weights,digits=2)`
+The portfolio has a standard deviation of `r round(ans$sd*100,2)`%    
+The portfolio has an expected geometric return of `r round(port_geom_return*100,2)`%    
+
+Now make private credit more correlated with equities.  Not logical that it is more correlated with EAFE than US.  Make 75 correlated with equities across the board.
+
+
+```{r}
+asset_names=c("BbgAgg","LrgUSEq","SmlUSEq","EAFE","EM","PE","PrivCredit","RE")
+geom_returns=c(4,7.5,7.75,7.75,9.5,9.5,7.25,7.25)/100
+volatility=c(6.03,15,21,21,28,21,13,12)/100
+correlation=matrix(nrow=8,data=
+                     c(100,0,0,0,0,0,0,10,
+                       0,100,90,70,60,90,75,40,
+                       0,90,100,60,65,90,75,40,
+                       0,70,60,100,70,75,75,35,
+                       0,60,65,70,100,60,75,30,
+                       0,90,90,75,60,100,75,50,
+                       0,75,75,75,75,75,100,40,
+                       10,40,40,35,30,50,40,100))/100
+names(geom_returns)=names(volatility)=asset_names
+rownames(correlation)=asset_names
+colnames(correlation)=asset_names
+n=30
+arith_returns=geom_to_arith(geom_returns,volatility,n)
+Dsqrt=0*correlation
+diag(Dsqrt)=volatility
+covariance=Dsqrt%*%correlation%*%Dsqrt
+
+ans=efficient.portfolio(er=geom_returns,
+                       cov.mat=covariance,
+                       target.return=.078,
+                       shorts=FALSE)
+port_arith_return=arith_returns%*%ans$weights
+port_geom_return=arith_to_geom(port_arith_return,ans$sd,n)
+```
+
+The weights for the portfolio are `r kable(ans$weights,digits=2)`
+The portfolio has a standard deviation of `r round(ans$sd*100,2)`%    
+The portfolio has an expected geometric return of `r round(port_geom_return*100,2)`%  
+
+Let's switch to an optimizer that allows us to place constraints and run with the following constraints.  Core Bonds, large cap equity and EAFE have a minimum of 10%.  All other assets have a maximum of 20%, with the exception of private equity which is limited to 10% and EM which is limited to 5%.  I limit the maximum combined equity position to 60%.
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+library(PortfolioAnalytics)
+require(ROI)
+require(ROI.plugin.glpk)
+require(ROI.plugin.quadprog)
+
+my.custom.moments <- function(R, portfolio){
+  out <- list()
+  out$mu <- geom_returns
+  out$sigma <- covariance
+  out
+}
+```
+
+
+```{r, warning=FALSE, message=FALSE}
+asset_names=c("BbgAgg","LrgUSEq","SmlUSEq","EAFE","EM","PE","PrivCredit","RE")
+geom_returns=c(4,7.75,8.25,7.75,8.25,8.75,7.75,7.75)/100
+volatility=c(6.03,15,21,21,28,21,13,12)/100
+correlation=matrix(nrow=8,data=
+                     c(100,0,0,0,0,0,0,10,
+                       0,100,90,70,60,90,75,40,
+                       0,90,100,60,65,90,75,40,
+                       0,70,60,100,70,75,75,35,
+                       0,60,65,70,100,60,75,30,
+                       0,90,90,75,60,100,75,50,
+                       0,75,75,75,75,75,100,40,
+                       10,40,40,35,30,50,40,100))/100
+names(geom_returns)=names(volatility)=asset_names
+rownames(correlation)=asset_names
+colnames(correlation)=asset_names
+n=30
+arith_returns=geom_to_arith(geom_returns,volatility,n)
+Dsqrt=0*correlation
+diag(Dsqrt)=volatility
+covariance=Dsqrt%*%correlation%*%Dsqrt
+
+# portfolio specification
+R=matrix(geom_returns,byrow=TRUE,nrow=100,ncol=8)
+colnames(R)=asset_names
+R=xts(R,Sys.Date()+0:99)
+p <- portfolio.spec(assets = names(geom_returns))
+# full investment constraint
+p <- add.constraint(portfolio = p, type = "weight_sum", 
+                    min_sum = 0.9999, max_sum = 1.0001)
+# asset constraints
+p <- add.constraint(portfolio = p, type = "box", 
+                    min = c(.1,.1,0,.1,0,0,.1,.1), 
+                    max = c(.3,.3,.1,.3,.1,.1,.2,.2))
+p <- add.constraint(portfolio=p, type="group",
+                    groups=list(groupA=c(2,3,4,5,6)),
+                    group_min=.2,
+                    group_max=.60)
+p <- add.constraint(portfolio = p, type="return", return_target=.075)
+p <- add.objective(portfolio = p, type = "return", name = "mean", multiplier = 0)
+p.minvol <- add.objective(portfolio=p,type="risk",name="var")
+
+opt.min.qp <- optimize.portfolio(R, portfolio=p.minvol, momentFUN=my.custom.moments,
+                                optimize_method="ROI",trace=TRUE)
+
+port_arith_return=arith_returns%*%opt.min.qp$weights
+port_geom_return=arith_to_geom(port_arith_return,opt.min.qp$opt_values$StdDev,n)
+```
+
+
+
+The weights for the portfolio are `r kable(opt.min.qp$weights,digits=2)`
+The portfolio has a standard deviation of `r round(100*opt.min.qp$opt_values$StdDev,2)`%    
+The portfolio has an expected geometric return of `r round(port_geom_return*100,2)`%  
