@@ -1,3 +1,3 @@
 # Strategic-Asset-Allocation-2018
 
-This is the draft strategic asset allocation policy currently under consideration by the ASRS. 
+This is the strategic asset allocation policy adopted by ASRS in 2018. 
